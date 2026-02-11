@@ -1,29 +1,34 @@
 """
-Esta clase se encarga de crear la tabla de usuarios en la base de datos,
-con sus respectivos campos y tipos de datos.
+Modelo Usuario para la base de datos.
 """
+
+# pylint: disable=import-error
 # pylint: disable=too-few-public-methods
+
 from sqlalchemy import Column, Integer, String, Boolean, DateTime, ForeignKey
+from sqlalchemy.sql import func
 from config.db import Base
 
 
 class User(Base):
     """
-    Clase que representa la tabla de usuarios en la base de datos.
+    Representa la tabla tbb_usuario.
     """
     __tablename__ = "tbb_usuario"
 
     id = Column(Integer, primary_key=True, index=True)
-    # Asegúrate de que la tabla 'tbc_roles' exista y tenga un campo 'id'
-    rol_id = Column(Integer, ForeignKey("tbc_roles.id"))
-    nombre = Column(String(60), nullable=True)
-    papellido = Column(String(60), nullable=True)
+    rol_id = Column(Integer, ForeignKey("tbc_roles.id"), nullable=False)
+
+    nombre = Column(String(60), nullable=False)
+    papellido = Column(String(60), nullable=False)
     sapellido = Column(String(60), nullable=True)
-    usuario = Column(String(60), nullable=True, unique=True)
-    password = Column(String(100), nullable=True)
+    usuario = Column(String(60), nullable=False, unique=True)
+    password = Column(String(255), nullable=False)
+
     direccion = Column(String(100), nullable=True)
-    telefono = Column(String(15), nullable=True)
+    telefono = Column(String(15), nullable=True, unique=True)
     correo = Column(String(100), nullable=True, unique=True)
+
     estatus = Column(Boolean, default=True)
-    fecha_registro = Column(DateTime, nullable=True)
-    fecha_modificacion = Column(DateTime, nullable=True)
+    fecha_registro = Column(DateTime, default=func.now)
+    fecha_modificacion = Column(DateTime, onupdate=func.now)

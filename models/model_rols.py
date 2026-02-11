@@ -1,18 +1,23 @@
 """
-Esta clase se encarga de crear la tabla de roles en la base de datos,
-con sus respectivos campos y tipos de datos.
+Modelo Rol para la base de datos.
 """
+
+# pylint: disable=import-error
 # pylint: disable=too-few-public-methods
-from sqlalchemy import Column, Integer, String, Boolean
+
+from sqlalchemy import Column, Integer, String, Boolean, DateTime
+from sqlalchemy.sql import func
 from config.db import Base
 
 
 class Rol(Base):
     """
-    Clase que representa la tabla de roles en la base de datos.
+    Representa la tabla tbc_roles.
     """
     __tablename__ = "tbc_roles"
 
     id = Column(Integer, primary_key=True, index=True)
-    descripcion = Column(String(60), nullable=True)
+    nombre = Column(String(60), nullable=False, unique=True)
     estatus = Column(Boolean, default=True)
+    fecha_registro = Column(DateTime, default=func.now)
+    fecha_modificacion = Column(DateTime, onupdate=func.now)
