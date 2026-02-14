@@ -21,7 +21,7 @@ class Servicio(Base):
     se_descripcion = Column(String(850), nullable=True)
     se_precio = Column(Float, nullable=False)
     se_estatus = Column(Boolean, default=True)
-
+    se_duracion_minutos = Column(Integer, nullable=False)
     us_id = Column(Integer, ForeignKey("tbb_usuario.id"), nullable=False)
 
     fecha_registro = Column(DateTime, default=func.now)

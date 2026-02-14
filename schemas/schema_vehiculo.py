@@ -10,11 +10,15 @@ class VehiculoBase(BaseModel):
     """
     Esquema base de Vehiculo.
     """
+    au_placa: str
     au_modelo: str
-    au_matricula: str
-    au_color: Optional[str]
-    au_tipo: Optional[str]
-    cl_id: int
+    au_serie: str
+    au_color: str
+    au_tipo: str
+    au_anio: int
+    estatus: bool
+    fecha_registro: datetime
+    fecha_modificacion: datetime
 
 
 class VehiculoCreate(VehiculoBase):

@@ -16,17 +16,19 @@ class UserBase(BaseModel):
     papellido: str
     sapellido: Optional[str]
     usuario: str
+    password: Optional[str]
     direccion: Optional[str]
     telefono: Optional[str]
     correo: Optional[str]
     estatus: bool
-
+    fecha_registro: datetime
+    fecha_modificacion: datatime
 
 class UserCreate(UserBase):
     """
     Esquema para crear usuario.
     """
-    password: str
+    pass
 
 
 class UserUpdate(UserBase):
@@ -40,9 +42,6 @@ class UserResponse(UserBase):
     Esquema de respuesta de usuario.
     """
     id: int
-    fecha_registro: datetime
-    fecha_modificacion: Optional[datetime]
-
     class Config:
         '''
         Configuración para permitir la conversión de objetos ORM a modelos Pydantic.
@@ -54,6 +53,6 @@ class UserLogin(BaseModel):
     """
     Esquema para login.
     """
-    correo: Optional[str]
-    telefono: Optional[str]
+    correo: Optional[str] = None
+    telefono: Optional[str] = None
     password: str

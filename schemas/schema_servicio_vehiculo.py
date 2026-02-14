@@ -11,11 +11,15 @@ class ServicioVehiculoBase(BaseModel):
     Esquema base de ServicioVehiculo.
     """
     au_id: int
+    cajero_id: int
+    operativo_id: int
     se_id: int
-    us_id: int
-    as_monto: float
-    as_pagado: bool
-    as_aprobado: bool
+    as_fecha: datatime
+    as_hora: time
+    as_estatus: str
+    as_estado: bool
+    fecha_registro: datetime
+    fecha_modificacion: datetime
 
 
 class ServicioVehiculoCreate(ServicioVehiculoBase):

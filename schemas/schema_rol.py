@@ -11,8 +11,10 @@ class RolBase(BaseModel):
     """
     Esquema base de Rol.
     """
-    nombre: str
+    nombre_rol: str
     estatus: bool
+    fecha_registro: datetime
+    fecha_modificacion: datetime
 
 
 class RolCreate(RolBase):
@@ -27,13 +29,11 @@ class RolUpdate(RolBase):
     """
 
 
-class RolResponse(RolBase):
+class Rol(RolBase):
     """
     Esquema de respuesta de rol.
     """
     id: int
-    fecha_registro: datetime
-    fecha_modificacion: Optional[datetime]
 
     class Config:
         '''

@@ -15,7 +15,10 @@ class ServicioBase(BaseModel):
     se_descripcion: Optional[str]
     se_precio: float
     se_estatus: bool
+    se_duracion_minutos: int
     us_id: int
+    fecha_registro: datetime
+    fecha_modificacion: datetime
 
 
 class ServicioCreate(ServicioBase):
@@ -35,8 +38,6 @@ class ServicioResponse(ServicioBase):
     Esquema de respuesta de servicio.
     """
     se_id: int
-    fecha_registro: datetime
-    fecha_modificacion: Optional[datetime]
 
     class Config:
         '''
