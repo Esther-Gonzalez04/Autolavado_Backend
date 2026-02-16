@@ -14,7 +14,7 @@ class ServicioVehiculoBase(BaseModel):
     cajero_id: int
     operativo_id: int
     se_id: int
-    as_fecha: datatime
+    as_fecha: datetime
     as_hora: time
     as_estatus: str
     as_estado: bool

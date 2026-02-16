@@ -7,7 +7,7 @@ from typing import Optional
 from pydantic import BaseModel
 
 # pylint: disable=too-few-public-methods
-class UserBase(BaseModel):
+class UsuarioBase(BaseModel):
     """
     Esquema base de Usuario.
     """
@@ -22,22 +22,22 @@ class UserBase(BaseModel):
     correo: Optional[str]
     estatus: bool
     fecha_registro: datetime
-    fecha_modificacion: datatime
+    fecha_modificacion: datetime
 
-class UserCreate(UserBase):
+class UsuarioCreate(UsuarioBase):
     """
     Esquema para crear usuario.
     """
     pass
 
 
-class UserUpdate(UserBase):
+class UsuarioUpdate(UsuarioBase):
     """
     Esquema para actualizar usuario.
     """
 
 
-class UserResponse(UserBase):
+class Usuario(UsuarioBase):
     """
     Esquema de respuesta de usuario.
     """
@@ -49,7 +49,7 @@ class UserResponse(UserBase):
         orm_mode = True
 
 
-class UserLogin(BaseModel):
+class UsuarioLogin(BaseModel):
     """
     Esquema para login.
     """

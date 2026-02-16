@@ -10,7 +10,7 @@ from sqlalchemy.sql import func
 from config.db import Base
 
 
-class User(Base):
+class Usuario(Base):
     """
     Representa la tabla tbb_usuario.
     """

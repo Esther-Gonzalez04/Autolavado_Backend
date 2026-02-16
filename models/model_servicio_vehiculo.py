@@ -8,14 +8,16 @@ Modelo ServicioVehiculo para la base de datos.
 from sqlalchemy import (Column,Integer,Boolean,ForeignKey,DateTime,Time,Enum)
 from sqlalchemy.sql import func
 from config.db import Base
+from enum import Enum as PyEnum
 
 
-class Solicitud():
+class Solicitud(PyEnum):
     ''' Enum para definir los estados de la solicitud de servicio. '''
     Programada = "Programada"
     Proceso = "Proceso"
     Realizada = "Realizada"
     Cancelada = "Cancelada"
+
 
 class ServicioVehiculo(Base):
     """

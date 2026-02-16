@@ -1,8 +1,8 @@
 '''
     Crud para el modelo de Usuario.
 '''
-import models.model_user
-import schemas.schema_user
+import models.model_usuario
+import schemas.schema_usuario
 from sqlalchemy.orm import Session
 
 def get_usuario(db: Session, skip: int = 0, limit: int = 10):

@@ -4,6 +4,7 @@ Esquemas Pydantic para Vehiculo.
 
 from typing import Optional
 from pydantic import BaseModel
+from datetime import datetime
 
 # pylint: disable=too-few-public-methods
 class VehiculoBase(BaseModel):
