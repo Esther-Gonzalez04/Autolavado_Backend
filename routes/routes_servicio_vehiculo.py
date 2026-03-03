@@ -54,7 +54,7 @@ async def read_servicio_vehiculo(
 
 @servicios_vehiculo.post(
     "/servicios-vehiculo/",
-    response_model=schema_servicio_vehiculo.ServicioVehiculoBase,
+    response_model=schema_servicio_vehiculo.ServicioVehiculo,
     tags=["ServicioVehiculo"]
 )
 async def create_servicio(
@@ -69,7 +69,7 @@ async def create_servicio(
 
 @servicios_vehiculo.put(
     "/servicios-vehiculo/{as_id}",
-    response_model=schema_servicio_vehiculo.ServicioVehiculoBase,
+    response_model=schema_servicio_vehiculo.ServicioVehiculo,
     tags=["ServicioVehiculo"]
 )
 async def update_servicio(
@@ -93,7 +93,7 @@ async def update_servicio(
 
 @servicios_vehiculo.delete(
     "/servicios-vehiculo/{as_id}",
-    response_model=schema_servicio_vehiculo.ServicioVehiculoBase,
+    response_model=schema_servicio_vehiculo.ServicioVehiculo,
     tags=["ServicioVehiculo"]
 )
 async def delete_servicio(

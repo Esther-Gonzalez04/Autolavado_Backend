@@ -48,7 +48,7 @@ async def read_servicio(skip: int = 0, limit: int = 10, db: Session = Depends(ge
 
 @servicio.post(
     "/servicios/",
-    response_model=schema_servicio.ServicioBase,
+    response_model=schema_servicio.Servicio,
     tags=["Servicio"]
 )
 async def create_servicio(
@@ -71,7 +71,7 @@ async def create_servicio(
 
 @servicio.put(
     "/servicios/{se_id}",
-    response_model=schema_servicio.ServicioBase,
+    response_model=schema_servicio.Servicio,
     tags=["Servicio"]
 )
 async def update_servicio(
@@ -93,7 +93,7 @@ async def update_servicio(
 
 @servicio.delete(
     "/servicios/{se_id}",
-    response_model=schema_servicio.ServicioBase,
+    response_model=schema_servicio.Servicio,
     tags=["Servicio"]
 )
 async def delete_servicio(se_id: int, db: Session = Depends(get_db)):

@@ -41,8 +41,8 @@ app = FastAPI(
 models.model_rols.Base.metadata.create_all(bind=config.db.engine)
 
 # Incluir routers
-app.include_router(usuario)
 app.include_router(rol)
+app.include_router(usuario)
 app.include_router(vehiculo)
 app.include_router(servicio)
 app.include_router(servicios_vehiculo)

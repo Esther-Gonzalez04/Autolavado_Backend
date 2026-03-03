@@ -9,6 +9,7 @@ from dotenv import load_dotenv
 from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
 from jose import JWTError, jwt
+from datetime import timezone
 
 load_dotenv()
 
@@ -28,12 +29,12 @@ def create_access_token(data: dict, expires_delta: Optional[timedelta] = None):
     else:
         # Pylint prefiere variables manejadas de forma segura si el .env falla
         expire_minutes = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", "30"))
-        expire = datetime.utcnow() + timedelta(minutes=expire_minutes)
+        expire = datetime.now(timezone.utc) + timedelta(minutes=expire_minutes)
 
     to_encode.update({"exp": expire})
 
-    secret_key = os.getenv("SECRET_KEY", "mi_clave_secreta_por_defecto")
-    algorithm = os.getenv("ALGORITHM", "HS256")
+    secret_key = os.getenv("SECRET_KEY")
+    algorithm = os.getenv("ALGORITHM")
 
     encoded_jwt = jwt.encode(to_encode, secret_key, algorithm=algorithm)
     return encoded_jwt
@@ -51,8 +52,8 @@ def get_current_user(token: str = Depends(oauth2_scheme)):
     )
 
     try:
-        secret_key = os.getenv("SECRET_KEY", "mi_clave_secreta_por_defecto")
-        algorithm = os.getenv("ALGORITHM", "HS256")
+        secret_key = os.getenv("SECRET_KEY")
+        algorithm = os.getenv("ALGORITHM")
 
         payload = jwt.decode(token, secret_key, algorithms=[algorithm])
         username: str = payload.get("sub")
